@@ -27,12 +27,12 @@ var (
 
 	vertShader string
 	fragShader string
-	buffer     gl.Buffer
-	program    gl.Program
+	buffer     sparkle.Buffer
+	program    sparkle.Program
 
-	position gl.Attrib
-	color    gl.Uniform
-	offset   gl.Uniform
+	position sparkle.Attrib
+	color    sparkle.Uniform
+	offset   sparkle.Uniform
 	green    float32 // Color of the triangle.
 	// triangleData = f32.Bytes(binary.LittleEndian,
 	// 	0.0, 0.4, 0.0, // top left

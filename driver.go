@@ -19,6 +19,13 @@ import (
 	"golang.org/x/mobile/gl"
 )
 
+type (
+	Uniform = gl.Uniform
+	Attrib  = gl.Attrib
+	Program = gl.Program
+	Buffer  = gl.Buffer
+)
+
 type Context struct {
 	Buffer *image.RGBA
 	GL     gl.Context
