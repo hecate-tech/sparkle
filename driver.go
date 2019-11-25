@@ -217,7 +217,7 @@ func sparkleDraw(ctx *Context, quit chan struct{}) {
 		}
 
 		ctx.GL.ClearColor(0, 0, 0, 1)
-		ctx.GL.Clear(gl.COLOR_BUFFER_BIT)
+		ctx.GL.Clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
 		newBuf(ctx)
 

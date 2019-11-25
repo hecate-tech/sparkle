@@ -1,6 +1,8 @@
 #version 100
+
 uniform vec2 offset;
 attribute vec4 position;
+
 void main() {
 	// offset comes in with x/y values between 0 and 1.
 	// position bounds are -1 to 1.
