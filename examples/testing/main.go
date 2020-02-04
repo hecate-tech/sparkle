@@ -39,11 +39,12 @@ var (
 	// 	0.0, 0.0, 0.0, // bottom left
 	// 	0.4, 0.0, 0.0, // bottom right
 	// )
-	triangleData = RobustBytes(binary.LittleEndian,
+	tData = []mgl64.Vec3{
 		mgl64.Vec3{0.0, 0.4, 0.0},
 		mgl64.Vec3{0.0, 0.0, 0.0},
 		mgl64.Vec3{0.4, 0.0, 0.0},
-	)
+	}
+	triangleData = RobustBytes(binary.LittleEndian, tData...)
 )
 
 func RobustBytes(byteOrder binary.ByteOrder, values ...mgl64.Vec3) []byte {

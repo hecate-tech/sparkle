@@ -19,11 +19,19 @@ import (
 	"golang.org/x/mobile/gl"
 )
 
+type Color struct {
+	R, G, B, A float32
+}
+
 type (
 	Uniform = gl.Uniform
 	Attrib  = gl.Attrib
 	Program = gl.Program
 	Buffer  = gl.Buffer
+)
+
+var (
+	BackgroundColor = Color{0.1, 0.2, 0.3, 1.0}
 )
 
 type Context struct {
@@ -102,6 +110,7 @@ func Main(opts *screen.NewWindowOptions, start, stop, update func(*Context)) (*C
 			return
 		}
 
+		// Render Texture.
 		ctx.texture, err = s.NewTexture(image.Point{opts.Width, opts.Height})
 		if err != nil {
 			return
@@ -216,7 +225,15 @@ func sparkleDraw(ctx *Context, quit chan struct{}) {
 		default:
 		}
 
-		ctx.GL.ClearColor(0, 0, 0, 1)
+		// Clear the background of the scene based on the global background
+		// color value.
+		ctx.GL.ClearColor(
+			BackgroundColor.R,
+			BackgroundColor.G,
+			BackgroundColor.B,
+			BackgroundColor.A,
+		)
+
 		ctx.GL.Clear(gl.COLOR_BUFFER_BIT)
 
 		newBuf(ctx)
@@ -226,7 +243,7 @@ func sparkleDraw(ctx *Context, quit chan struct{}) {
 		}
 
 		ctx.texture.Upload(
-			image.Point{0, 0},
+			image.Point{X: 0, Y: 0},
 			ctx.windowBuffer,
 			ctx.windowBuffer.Bounds(),
 		)
